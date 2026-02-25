@@ -666,7 +666,6 @@ html[dir="rtl"] body {
 }
 
 html[dir="rtl"] .hero-actions,
-html[dir="rtl"] .nav-links,
 html[dir="rtl"] .contact-mini p {
   flex-direction: row-reverse;
 }
@@ -676,9 +675,17 @@ html[dir="rtl"] .timeline li {
   border-right: 4px solid #99d4f7;
 }
 
+@media (min-width: 981px) {
+  html[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+  }
+}
+
 @media (max-width: 980px) {
   .menu-toggle {
     display: inline-block;
+    position: relative;
+    z-index: 1700;
   }
 
   .nav-links {
@@ -689,15 +696,23 @@ html[dir="rtl"] .timeline li {
     height: calc(100vh - 76px);
     background: var(--surface);
     border-left: 1px solid var(--line);
+    border-right: 0;
     box-shadow: var(--shadow);
     flex-direction: column;
     align-items: stretch;
     padding: 14px;
     transition: inset-inline-end var(--ease);
+    z-index: 1650;
   }
 
   .nav-links.active {
     inset-inline-end: 0;
+  }
+
+  html[dir="rtl"] .nav-links {
+    flex-direction: column;
+    border-left: 0;
+    border-right: 1px solid var(--line);
   }
 
   .hero-grid,
